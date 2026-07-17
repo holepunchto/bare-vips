@@ -32,9 +32,7 @@ jobs:
     name: Test / ${{ matrix.platform }}-${{ matrix.arch }}
     steps:
       - uses: holepunchto/actions/bare-base@v1
-      - run: |
-          sudo apt update
-          sudo apt install -y meson
+      - run: python -m pip install meson
         if: ${{ matrix.platform == 'linux' }}
       - run: brew install meson
         if: ${{ matrix.platform == 'darwin' }}
