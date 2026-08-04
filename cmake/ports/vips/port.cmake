@@ -62,7 +62,7 @@ declare_port(
     lib/libexpat.a
     lib/libintl.a
   PATCHES
-    patches/001-connection-io-h.patch
+    patches/001-include-io-h.patch
   WRAPS
     subprojects/glib.wrap
     subprojects/expat.wrap
