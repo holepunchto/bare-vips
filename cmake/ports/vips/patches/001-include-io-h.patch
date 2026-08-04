@@ -1,0 +1,52 @@
+diff --git a/libvips/iofuncs/connection.c b/libvips/iofuncs/connection.c
+index caecadf2..6fdf875e 100644
+--- a/libvips/iofuncs/connection.c
++++ b/libvips/iofuncs/connection.c
+@@ -45,6 +45,9 @@
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif /*HAVE_UNISTD_H*/
++#ifdef HAVE_IO_H
++#include <io.h>
++#endif /*HAVE_IO_H*/
+ #include <string.h>
+ #include <errno.h>
+ #include <sys/types.h>
+diff --git a/test/test_connections.c b/test/test_connections.c
+index 38fa45d1..6875b469 100644
+--- a/test/test_connections.c
++++ b/test/test_connections.c
+@@ -1,12 +1,19 @@
+ /* Test stream*u.
+  */
+ 
++#ifdef HAVE_CONFIG_H
++#include <config.h>
++#endif /*HAVE_CONFIG_H*/
++
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif /*HAVE_UNISTD_H*/
++#ifdef HAVE_IO_H
++#include <io.h>
++#endif /*HAVE_IO_H*/
+ #include <string.h>
+ #include <vips/vips.h>
+ 
+diff --git a/tools/vipsedit.c b/tools/vipsedit.c
+index 7dbc28b1..b3476ba5 100644
+--- a/tools/vipsedit.c
++++ b/tools/vipsedit.c
+@@ -60,6 +60,9 @@
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+ #endif /*HAVE_UNISTD_H*/
++#ifdef HAVE_IO_H
++#include <io.h>
++#endif /*HAVE_IO_H*/
+ #include <locale.h>
+ 
+ #include <vips/vips.h>

@@ -61,6 +61,8 @@ declare_port(
     lib/libz.a
     lib/libexpat.a
     lib/libintl.a
+  PATCHES
+    patches/001-include-io-h.patch
   WRAPS
     subprojects/glib.wrap
     subprojects/expat.wrap
@@ -174,6 +176,13 @@ elseif(LINUX OR ANDROID)
       ${CMAKE_DL_LIBS}
   )
 elseif(WIN32)
+  target_link_libraries(
+    gio-2.0
+    INTERFACE
+      dnsapi
+      iphlpapi
+  )
+
   target_link_libraries(
     glib-2.0
     INTERFACE
