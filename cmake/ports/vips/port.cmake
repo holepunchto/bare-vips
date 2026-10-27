@@ -11,6 +11,9 @@ set(args
   -Dcplusplus=false
   -Dexamples=false
   -Ddeprecated=false
+  -Dglib:tests=false
+  -Dpcre2:grep=false
+  -Dpcre2:test=false
 
   # Disable every optional external image format library. These can be enabled
   # individually later as features, each backed by its own port.
