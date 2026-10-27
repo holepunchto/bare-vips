@@ -1,6 +1,6 @@
 {
   "name": "bare-vips",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "libvips bindings for Bare",
   "exports": {
     ".": "./index.js",
