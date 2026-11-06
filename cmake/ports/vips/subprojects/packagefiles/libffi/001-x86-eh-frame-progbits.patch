@@ -1,0 +1,13 @@
+diff --git a/src/x86/sysv.S b/src/x86/sysv.S
+index dac8414..dc280ca 100644
+--- a/src/x86/sysv.S
++++ b/src/x86/sysv.S
+@@ -972,8 +972,6 @@ ENDF(C(__x86.get_pc_thunk.dx))
+ EHFrame0:
+ #elif defined(X86_WIN32)
+ .section .eh_frame,"r"
+-#elif defined(HAVE_AS_X86_64_UNWIND_SECTION_TYPE)
+-.section .eh_frame,EH_FRAME_FLAGS,@unwind
+ #else
+ .section .eh_frame,EH_FRAME_FLAGS,@progbits
+ #endif

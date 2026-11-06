@@ -9,6 +9,7 @@ patch_url = https://wrapdb.mesonbuild.com/v2/libffi_3.7.1-1/get_patch
 patch_fallback_url = https://github.com/mesonbuild/wrapdb/releases/download/libffi_3.7.1-1/libffi_3.7.1-1_patch.zip
 patch_hash = 7c5397bbfd026a5b9aac87e8aea58a6098329b4ee13243e3a9c8f49978418fac
 wrapdb_version = 3.7.1-1
+diff_files = libffi/001-x86-eh-frame-progbits.patch
 
 [provide]
 dependency_names = libffi

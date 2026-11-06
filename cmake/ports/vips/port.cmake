@@ -73,6 +73,7 @@ declare_port(
     subprojects/pcre2.wrap
     subprojects/zlib.wrap
     subprojects/proxy-libintl.wrap
+    subprojects/packagefiles
   ARGS ${args}
 )
 
@@ -169,7 +170,14 @@ if(APPLE)
       "-lresolv"
       m
   )
-elseif(LINUX OR ANDROID)
+elseif(ANDROID)
+  target_link_libraries(
+    glib-2.0
+    INTERFACE
+      m
+      ${CMAKE_DL_LIBS}
+  )
+elseif(LINUX)
   target_link_libraries(
     glib-2.0
     INTERFACE
