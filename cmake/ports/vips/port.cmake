@@ -49,6 +49,12 @@ set(args
   -Dwebp=disabled
 )
 
+# iOS does not allow apps to map executable memory, so the PCRE2 JIT cannot
+# work there.
+if(IOS)
+  list(APPEND args -Dpcre2:jit=disabled)
+endif()
+
 declare_port(
   "github:libvips/libvips@8.18.4"
   vips
@@ -158,7 +164,15 @@ target_link_libraries(
     intl
 )
 
-if(APPLE)
+if(IOS)
+  target_link_libraries(
+    glib-2.0
+    INTERFACE
+      "-liconv"
+      "-lresolv"
+      m
+  )
+elseif(APPLE)
   target_link_libraries(
     glib-2.0
     INTERFACE

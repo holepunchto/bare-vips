@@ -1,0 +1,17 @@
+diff --git a/meson.build b/meson.build
+index b624bbf..b087fba 100644
+--- a/meson.build
++++ b/meson.build
+@@ -89,6 +89,12 @@ foreach f : [
+   config.set('HAVE_@0@'.format(f.to_upper()), cc.has_function(f))
+ endforeach
+ 
++# On Apple platforms, getentropy() is declared in <sys/random.h>, which the
++# iOS SDK does not ship.
++if cc.get_define('__APPLE__') != '' and not cc.has_header('sys/random.h')
++  config.set('HAVE_GETENTROPY', false)
++endif
++
+ config.set(
+   'XML_DEV_URANDOM',
+   host_machine.system() != 'windows' and get_option('use_dev_urandom'),
