@@ -1,0 +1,17 @@
+diff --git a/gobject/meson.build b/gobject/meson.build
+index 9690e7c..661b1bb 100644
+--- a/gobject/meson.build
++++ b/gobject/meson.build
+@@ -108,6 +108,12 @@ foreach tool: python_tools
+   set_variable(tool.underscorify(), tool_bin)
+   # Provide tools for others when we're a subproject and they use the Meson GNOME module
+   meson.override_find_program(tool, tool_bin)
++  # Meson 1.12 looks up these tools for the build machine. They are Python
++  # scripts that run on any machine, so offer them there too instead of letting
++  # Meson configure a second GLib for the build machine.
++  if meson.is_cross_build() and meson.version().version_compare('>=1.12.0')
++    meson.override_find_program(tool, tool_bin, native : true)
++  endif
+ endforeach
+ 
+ # Generate a header file containing the GObject enum types for the enums defined
